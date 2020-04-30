@@ -1,0 +1,25 @@
+docker ps -a
+
+docker image ls
+docker volume ls
+
+# remove containers that have been stopped:
+docker rm $(docker ps -a -f status=exited -q)
+
+# Find out IP address of a container
+docker inspect  <container_ID> | grep IPAddress
+
+# Connect into a running container:
+docker exec -it <container_ID> bash       (interactive, terminal, what command to run inside)
+
+# Log out:
+exit
+
+# Create an image from a container:
+docker commit <current_running_container> <custom_image_name>
+
+# Export image
+docker save <IMG> > image.tar
+
+# Import an image
+docker load --input <IMG.tar>
